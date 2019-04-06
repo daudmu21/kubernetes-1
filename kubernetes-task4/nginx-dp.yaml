@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubernetes.io/change-cause: "Update to nginx 1.14.0"
+  name: nginx-dp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      service: http-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 1
+  template:
+    metadata:
+      labels:
+        service: http-server
+    spec:
+      containers:
+      - name: nginx-dp
+        image: nginx:1.14.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+
