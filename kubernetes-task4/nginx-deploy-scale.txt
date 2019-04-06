@@ -1,0 +1,22 @@
+kubectl get pods
+
+NAME                            READY     STATUS    RESTARTS   AGE
+nginx-deploy-569c8cc9f8-lmbwd   1/1       Running   0          11s
+nginx-deploy-569c8cc9f8-nhkgr   1/1       Running   0          11s
+nginx-deploy-569c8cc9f8-wtw5c   1/1       Running   0          11s
+
+
+kubectl scale deployment nginx-deploy --replicas=6
+
+kubectl get pods                                                                                   
+
+NAME                            READY     STATUS    RESTARTS   AGE
+nginx-deploy-569c8cc9f8-2rd6l   1/1       Running   0          1m
+nginx-deploy-569c8cc9f8-784b5   1/1       Running   0          1m
+nginx-deploy-569c8cc9f8-gzgbv   1/1       Running   0          1m
+nginx-deploy-569c8cc9f8-lmbwd   1/1       Running   0          3m
+nginx-deploy-569c8cc9f8-nhkgr   1/1       Running   0          3m
+nginx-deploy-569c8cc9f8-wtw5c   1/1       Running   0          3m
+
+
+
